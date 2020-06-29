@@ -1,6 +1,6 @@
 {
   "name": "utileo",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "JS library with most common utils.",
   "main": "dist/lib.js",
   "module": "dist/lib.js",
