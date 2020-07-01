@@ -4,6 +4,7 @@
   "description": "JS library with most common utils.",
   "main": "dist/lib.js",
   "module": "dist/lib.js",
+  "typings": "./index.d.ts",
   "scripts": {
     "build": "set NODE_ENV=production && webpack --config webpack.config.js --progress -p",
     "lint": "eslint src/.",
