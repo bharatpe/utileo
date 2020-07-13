@@ -3,6 +3,8 @@ import DateUtils from './DateUtils';
 import CommonUtils from './CommonUtils';
 import history from './history';
 import getUrlParameter from './urlParameter';
+import geoLocation from './geolocation';
+import FormatIndianCurrency from './indian-currency-formatter';
 
 export {
   StorageUtils,
@@ -10,4 +12,6 @@ export {
   CommonUtils,
   history,
   getUrlParameter,
+  geoLocation,
+  FormatIndianCurrency,
 };
