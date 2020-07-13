@@ -1,4 +1,10 @@
-export const getURLParameter = (qrString, paramName) => {
+/**
+ * @function _getURLParameter
+ * @param {string} qrString 
+ * @param {string} paramName 
+ * @description get value of param from URL
+ */
+const _getURLParameter = (qrString, paramName) => {
     qrString = qrString.replace(/[\[]/,'\\[').replace(/[\]]/,'\\]');
     var regex = new RegExp('[\\?&]' + paramName + '=([^&#]*)');
     var results = regex.exec(qrString);
@@ -10,3 +16,7 @@ export const getURLParameter = (qrString, paramName) => {
       return '';
     }
   }
+
+export default {
+  getURLParameter: _getURLParameter,
+};
