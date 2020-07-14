@@ -1,13 +1,4 @@
 /**
- * @function _trim
- * @param {string} str 
- * @description trim a string
- */
-const _trim = (str) => {
-    return str.toString().replace(/^\s+|\s+$/g, '');
-};
-
-/**
  * @function _titleCase
  * @param {string} str 
  * @description convert a string to title case
@@ -37,9 +28,26 @@ const _toNumber = value => {
     return Number(value);
 };
 
+/**
+ * @function _partition
+ * @param {array} arr 
+ * @param {function} criteria 
+ * @description splits an array into two groups - one that match criteria and one that don't
+ */
+var _partition = function (arr, criteria) {
+	return [
+		arr.filter(function (item) {
+			return criteria(item);
+		}),
+		arr.filter(function (item) {
+			return !criteria(item);
+		}),
+	];
+};
+
 export default {
-    trim: _trim,
     titleCase: _titleCase,
     camelize: _camelize,
     toNumber: _toNumber,
+    partition: _partition,
 };

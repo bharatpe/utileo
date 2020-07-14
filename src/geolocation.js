@@ -71,8 +71,12 @@ function getCurrentLatLong(timeout) {
     return Promise.race(racePromiseList);
 }
 ​
-// get lat long
-async function getLatLong(timeout) {
+/**
+ * @function _getLatLong
+ * @param {number} timeout
+ * @description get lat and long
+ */
+async function _getLatLong(timeout) {
     const latLong = {
         lat: 0,
         long: 0
@@ -97,5 +101,6 @@ async function getLatLong(timeout) {
     return latLong;
 }
 ​
-  
-export default getLatLong;
+export default {
+    getLatLong: _getLatLong,
+  };

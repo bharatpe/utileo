@@ -4,7 +4,7 @@ import CommonUtils from './CommonUtils';
 import history from './history';
 import getUrlParameter from './urlParameter';
 import geoLocation from './geolocation';
-import FormatIndianCurrency from './indian-currency-formatter';
+import formatCurrency from './currency-formatter';
 
 export {
   StorageUtils,
@@ -13,5 +13,5 @@ export {
   history,
   getUrlParameter,
   geoLocation,
-  FormatIndianCurrency,
+  formatCurrency,
 };
