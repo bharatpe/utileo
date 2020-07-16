@@ -45,9 +45,39 @@ var _partition = function (arr, criteria) {
 	];
 };
 
+/**
+ * @function _isArray
+ * @param {*} arr 
+ * @description Check for an Array
+ */
+const _isArray = arr => {
+    return Array.isArray(arr); ;
+};
+
+/**
+ * @function _isObject
+ * @param {*} obj 
+ * @description Check for an Object
+ */
+const _isObject = obj => {
+    return Object.prototype.toString.call(obj) === "[object Object]";
+};
+
+/**
+ * @function _isFunction
+ * @param {*} func 
+ * @description Check for a function
+ */
+const _isFunction = func => {
+    return typeof func === 'function';
+};
+
 export default {
     titleCase: _titleCase,
     camelize: _camelize,
     toNumber: _toNumber,
     partition: _partition,
+    isArray: _isArray,
+    isObject: _isObject,
+    isFunction: _isFunction,
 };
