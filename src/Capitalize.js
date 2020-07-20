@@ -1,6 +1,10 @@
 // Auto Capitalization every string or after space
-
-export const capitalize = (text) => {
+/**
+   * use this method to auto Capitalize the String
+   * @param  {string}  "hello world"
+   * @return {string}   "Hello World"
+   */
+export const Capitalize = (text) => {
   let capitalizeText = "";
 
   if (typeof text === "string") {
