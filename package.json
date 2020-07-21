@@ -1,6 +1,6 @@
 {
   "name": "utileo",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "JS library with most common utils.",
   "main": "dist/lib.js",
   "module": "dist/lib.js",
@@ -29,6 +29,7 @@
   "author": "WebChapter | Bharatpe",
   "license": "ISC",
   "dependencies": {
+    "history": "^5.0.0",
     "terser-webpack-plugin": "^3.0.3"
   }
 }
