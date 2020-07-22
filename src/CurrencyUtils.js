@@ -18,10 +18,7 @@ var CurrencyUtils = {
       const formatted = parseInt(amount).toFixed(1).replace(/(\d)(?=(\d{2})+\d\.)/g, '$1,');
       return formatted.slice(0, formatted.length - 2);
     }
-    else {
-      return amount;
-    }
-
+    return amount;
   },
 
   /**
@@ -33,9 +30,7 @@ var CurrencyUtils = {
     if (typeof amount === "string") {
       return parseInt(amount.split(",").join(""));
     }
-    else {
-      return amount;
-    }
+    return amount;
   },
 
   /**
@@ -47,9 +42,7 @@ var CurrencyUtils = {
     if (typeof amount === "string") {
       return this.parse(amount);
     }
-    else {
-      return amount;
-    }
+    return amount;
   }
 };
 

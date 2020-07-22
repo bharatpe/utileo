@@ -9,10 +9,8 @@ const _titleCase = str => {
             return (word.charAt(0).toUpperCase() + word.slice(1));
         }).join(' ');
     }
-    else{
-        return str;
-    }
-}
+    return str;
+};
 
 /**
  * @function _camelize
@@ -24,10 +22,8 @@ const _camelize = str => {
     if (typeof str === "string") {
         return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '');
     }
-    else{
-        return str;
-    }
-}
+    return str;
+};
 
 /**
  * @function _toNumber
@@ -38,9 +34,7 @@ const _toNumber = value => {
     if(value != undefined){
         return Number(value);
     }
-    else{
-        return value;
-    }
+    return value;
 };
 
 /**
@@ -60,9 +54,7 @@ var _partition = function (arr, criteria) {
             }),
         ];
     }
-    else{
-        return arr;
-    }
+    return arr;
 };
 
 /**

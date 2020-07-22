@@ -12,9 +12,7 @@ const _formatDate = date => {
             year: date.getFullYear(),
         };
     }
-    else{
-        return date;
-    }
+    return date;
 };
 
 /**
@@ -39,9 +37,7 @@ const _getDateByDashFormat = date => {
         month = month < 10 ? (`0${month}`) : month;
         return `${day}-${month}-${formatDate.getFullYear()}`;
     }
-    else{
-        return date;
-    }
+    return date;
 };
 
 /**
@@ -59,9 +55,7 @@ const _getDateBySlashFormat = date => {
         month = month < 10 ? (`0${month}`) : month;
         return `${day}/${month}/${formatDate.getFullYear()}`;
     }
-    else{
-        return date;
-    }
+    return date;
 };
 
 /**
@@ -75,9 +69,7 @@ const _timestampToDate = timestamp => {
     if (typeof timestamp === "number") {
         return new Date(timestamp);
     }
-    else{
-        return timestamp;
-    }
+    return timestamp;
 };
 
 export default {
