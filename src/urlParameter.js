@@ -5,6 +5,7 @@
  * @description get value of param from URL
  */
 const _getURLParameter = (qrString, paramName) => {
+  if (typeof qrString === "string" && typeof paramName === "string") {
     qrString = qrString.replace(/[\[]/,'\\[').replace(/[\]]/,'\\]');
     var regex = new RegExp('[\\?&]' + paramName + '=([^&#]*)');
     var results = regex.exec(qrString);
@@ -16,6 +17,10 @@ const _getURLParameter = (qrString, paramName) => {
       return '';
     }
   }
+  else{
+    return "enter string";
+  }
+}
 
 export default {
   getURLParameter: _getURLParameter,

@@ -35,7 +35,12 @@ const _camelize = str => {
  * @description convert a string to number
  */
 const _toNumber = value => {
-    return Number(value);
+    if(value != undefined){
+        return Number(value);
+    }
+    else{
+        return value;
+    }
 };
 
 /**
@@ -45,14 +50,19 @@ const _toNumber = value => {
  * @description splits an array into two groups - one that match criteria and one that don't
  */
 var _partition = function (arr, criteria) {
-	return [
-		arr.filter(function (item) {
-			return criteria(item);
-		}),
-		arr.filter(function (item) {
-			return !criteria(item);
-		}),
-	];
+    if (_isArray(arr)) {
+        return [
+            arr.filter(function (item) {
+                return criteria(item);
+            }),
+            arr.filter(function (item) {
+                return !criteria(item);
+            }),
+        ];
+    }
+    else{
+        return arr;
+    }
 };
 
 /**
