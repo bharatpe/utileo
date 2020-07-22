@@ -4,9 +4,14 @@
  * @description convert a string to title case
  */
 const _titleCase = str => {
-    return str.toLowerCase().split(' ').map(function(word) {
-      return (word.charAt(0).toUpperCase() + word.slice(1));
-    }).join(' ');
+    if (typeof str === "string") {
+        return str.toLowerCase().split(' ').map(function(word) {
+            return (word.charAt(0).toUpperCase() + word.slice(1));
+        }).join(' ');
+    }
+    else{
+        return str;
+    }
 }
 
 /**
@@ -16,7 +21,12 @@ const _titleCase = str => {
  */
 const _camelize = str => {
     const camelizeRE = /-(\w)/g;
-    return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '');
+    if (typeof str === "string") {
+        return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '');
+    }
+    else{
+        return str;
+    }
 }
 
 /**

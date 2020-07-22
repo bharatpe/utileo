@@ -80,11 +80,11 @@ npm i utileo --save-dev
 
 ## Usage
 ```javascript
-import { formatCurrency, CommonUtils, StorageUtils, geoLocation, getUrlParameter, history, DateUtils } from 'utileo';
+import { CurrencyUtils, CommonUtils, StorageUtils, geoLocation, getUrlParameter, history, DateUtils } from 'utileo';
 
-// Format Currency
-formatCurrency.format('10000') // 10,000
-formatCurrency.parse('10000') 
+// Currency Utils
+CurrencyUtils.format('10000') // 10,000
+CurrencyUtils.parse('10000') 
 
 // Common Utils
 CommonUtils.titleCase('main menu')// Main Menu
