@@ -4,10 +4,13 @@
  * @description convert a string to title case
  */
 const _titleCase = str => {
-    return str.toLowerCase().split(' ').map(function(word) {
-      return (word.charAt(0).toUpperCase() + word.slice(1));
-    }).join(' ');
-}
+    if (typeof str === "string") {
+        return str.toLowerCase().split(' ').map(function(word) {
+            return (word.charAt(0).toUpperCase() + word.slice(1));
+        }).join(' ');
+    }
+    return str;
+};
 
 /**
  * @function _camelize
@@ -16,8 +19,11 @@ const _titleCase = str => {
  */
 const _camelize = str => {
     const camelizeRE = /-(\w)/g;
-    return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '');
-}
+    if (typeof str === "string") {
+        return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '');
+    }
+    return str;
+};
 
 /**
  * @function _toNumber
@@ -25,7 +31,10 @@ const _camelize = str => {
  * @description convert a string to number
  */
 const _toNumber = value => {
-    return Number(value);
+    if(value != undefined){
+        return Number(value);
+    }
+    return value;
 };
 
 /**
@@ -35,14 +44,17 @@ const _toNumber = value => {
  * @description splits an array into two groups - one that match criteria and one that don't
  */
 var _partition = function (arr, criteria) {
-	return [
-		arr.filter(function (item) {
-			return criteria(item);
-		}),
-		arr.filter(function (item) {
-			return !criteria(item);
-		}),
-	];
+    if (_isArray(arr)) {
+        return [
+            arr.filter(function (item) {
+                return criteria(item);
+            }),
+            arr.filter(function (item) {
+                return !criteria(item);
+            }),
+        ];
+    }
+    return arr;
 };
 
 /**

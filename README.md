@@ -4,11 +4,11 @@ A JS library for most commonly used utils
 
 ![Utileo](/assets/utileo.png)
 
-## Regex
- - Currency Formatter
- - URL Parameter
+## Utils
+ - Currency Utils
+ - URL Utils
  - Common Utils
- - Geo Location
+ - Geo Location Utils
  - History
  - Storage Utils
  - Date Utils
@@ -28,7 +28,7 @@ npm i utileo --save-dev
 
   Method                          |     Params       |        Description
 ----------------------------------|------------------|------------------------------------------
-  format                          | amount, isFloat  |  To display any and all amount-values
+  format                          | amount, isFloat  |  To display any and all amount-values, if isFloat is true, amount formatted to 2 decimal places
   parse                           |      amount      |  To parse amount-value back to number-only
   beforeAPIRequest                |      amount      |  Before-submitting on any API-requests
 
@@ -80,11 +80,12 @@ npm i utileo --save-dev
 
 ## Usage
 ```javascript
-import { formatCurrency, CommonUtils, StorageUtils, geoLocation, getUrlParameter, history, DateUtils } from 'utileo';
+import { CurrencyUtils, CommonUtils, StorageUtils, GeoLocationUtils, URLUtils, History, DateUtils } from 'utileo';
 
-// Format Currency
-formatCurrency.format('10000') // 10,000
-formatCurrency.parse('10000') 
+// Currency Utils
+CurrencyUtils.format('10000') // 10,000
+CurrencyUtils.format('10000.1234',true) // 10,000.12
+CurrencyUtils.parse('1,00,000') // 100000 
 
 // Common Utils
 CommonUtils.titleCase('main menu')// Main Menu
@@ -114,17 +115,17 @@ StorageUtils.remove('token')
 StorageUtils.removeAll()
 
 // geo Location
-let latLong = geoLocation.getLatLong()// value of lat long
+let latLong = GeoLocationUtils.getLatLong()// value of lat long
 let latitude = latLong.lat
 let longitude = latLong.long
 
 // URL Parameter
-var appVisa = getURLParameter(window.location.href, 'visa')// 12n23be3h3bhbbh34
+var appVisa = URLUtils.getURLParameter(window.location.href, 'visa')// 12n23be3h3bhbbh34
 
 // History
-history.replace("/")
-history.goBack()
-history.push("/")
+History.replace("/")
+History.goBack()
+History.push("/")
 
 // Date Utils
 const currDate = DateUtils.getCurrentDate();// Wed Jul 14 2020 13:07:57 GMT+0530 (India Standard Time)

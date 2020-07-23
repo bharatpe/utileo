@@ -5,11 +5,14 @@
  * @description Date formatting and sending an object of day, month, year
  */
 const _formatDate = date => {
-    return {
-        day: date.getDate(),
-        month: date.getMonth(),
-        year: date.getFullYear(),
-    };
+    if (Object.prototype.toString.call(date) === '[object Date]') {
+        return {
+            day: date.getDate(),
+            month: date.getMonth(),
+            year: date.getFullYear(),
+        };
+    }
+    return date;
 };
 
 /**
@@ -26,12 +29,15 @@ const _getCurrentDate = () => new Date();
  * @description Converting date to DD-MM-YYYY format Ex : 18-11-2020 
  */
 const _getDateByDashFormat = date => {
-    const formatDate = new Date(date);
-    var day = formatDate.getDate();
-    day = day < 10 ? (`0${day}`) : day;
-    var month = formatDate.getMonth() + 1;
-    month = month < 10 ? (`0${month}`) : month;
-    return `${day}-${month}-${formatDate.getFullYear()}`;
+    if (Object.prototype.toString.call(date) === '[object Date]') {
+        const formatDate = new Date(date);
+        var day = formatDate.getDate();
+        day = day < 10 ? (`0${day}`) : day;
+        var month = formatDate.getMonth() + 1;
+        month = month < 10 ? (`0${month}`) : month;
+        return `${day}-${month}-${formatDate.getFullYear()}`;
+    }
+    return date;
 };
 
 /**
@@ -41,23 +47,29 @@ const _getDateByDashFormat = date => {
  * @description Converting date to DD/MM/YYYY format Ex : 18/11/2020 
  */
 const _getDateBySlashFormat = date => {
-    const formatDate = new Date(date);
-    var day = formatDate.getDate();
-    day = day < 10 ? (`0${day}`) : day;
-    var month = formatDate.getMonth() + 1;
-    month = month < 10 ? (`0${month}`) : month;
-    return `${day}/${month}/${formatDate.getFullYear()}`;
+    if (Object.prototype.toString.call(date) === '[object Date]') {
+        const formatDate = new Date(date);
+        var day = formatDate.getDate();
+        day = day < 10 ? (`0${day}`) : day;
+        var month = formatDate.getMonth() + 1;
+        month = month < 10 ? (`0${month}`) : month;
+        return `${day}/${month}/${formatDate.getFullYear()}`;
+    }
+    return date;
 };
 
 /**
  * @name _timestampToDate
- * @param {string} timestamp 
+ * @param {number} timestamp 
  * @returns {date}
  * @description Converting timestamp to date Ex : 1560211200000 to 
  * Tue Jun 11 2019 05:30:00 GMT+0530 (India Standard Time)
  */
 const _timestampToDate = timestamp => {
-    return new Date(timestamp);
+    if (typeof timestamp === "number") {
+        return new Date(timestamp);
+    }
+    return timestamp;
 };
 
 export default {

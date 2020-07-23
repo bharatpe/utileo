@@ -1,21 +1,17 @@
 import StorageUtils from './StorageUtils';
 import DateUtils from './DateUtils';
-import Capitalize from './Capitalize';
-import Currency from './Currency-format-Inr';
 import CommonUtils from './CommonUtils';
-import history from './history';
-import getUrlParameter from './urlParameter';
-import geoLocation from './geolocation';
-import formatCurrency from './currency-formatter';
+import History from './history';
+import URLUtils from './urlParameter';
+import GeoLocationUtils from './geolocation';
+import CurrencyUtils from './CurrencyUtils';
 
 export {
   StorageUtils,
   DateUtils,
-  Capitalize,
-  Currency
   CommonUtils,
-  history,
-  getUrlParameter,
-  geoLocation,
-  formatCurrency,
+  History,
+  URLUtils,
+  GeoLocationUtils,
+  CurrencyUtils,
 };
