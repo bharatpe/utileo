@@ -17,7 +17,7 @@ const _getURLParameter = (qrString, paramName) => {
       return '';
     }
   }
-  return "enter string";
+  return '';
 }
 
 export default {
