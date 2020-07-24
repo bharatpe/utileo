@@ -72,10 +72,32 @@ const _timestampToDate = timestamp => {
     return timestamp;
 };
 
+/**
+ * @name _getDateFromString
+ * @param {string} value 
+ * @returns {date}
+ * @description Converting string to date Ex : '2/10/2017' to 
+ * Sat Feb 10 2017 00:00:00 GMT+0530 (India Standard Time)
+ */
+const _getDateFromString = value => {
+    return new Date(
+      value
+        ?.split(' ')
+        .map(part =>
+          part
+            .split('/')
+            .reverse()
+            .join('/')
+        )
+        .join(' ')
+    );
+  };
+
 export default {
     formatDate: _formatDate,
     getCurrentDate: _getCurrentDate,
     getDateByDashFormat: _getDateByDashFormat,
     getDateBySlashFormat: _getDateBySlashFormat,
     timestampToDate: _timestampToDate,
+    getDateFromString:_getDateFromString,
 };

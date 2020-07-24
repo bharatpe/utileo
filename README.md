@@ -34,15 +34,22 @@ npm i utileo --save-dev
 
 ## Common Util Methods
 
-  Method                          |     Params       |        Description
-----------------------------------|------------------|---------------------------------------------------------------
-  titleCase                       |      value       |  Convert a string to title case
-  camelize                        |      value       |  Convert hello-world style strings to helloWorld style strings 
-  toNumber                        |      value       |  Convert a string to number
-  partition                       |   arr, criteria  |  Partition array into two arrays based on criteria
-  isArray                         |      value       |  Check for an Array
-  isObject                        |      value       |  Check for an Object
-  isFunction                      |      value       |  Check for a function
+  Method                            |     Params       |        Description
+------------------------------------|------------------|---------------------------------------------------------------
+  validateName                      |      string      |  Check if all characters in the string are alphabets
+  validateOnlyNumber                |  string/number   |  Check if it is a number
+  titleCase                         |     string       |  Convert a string to title case
+  camelize                          |     string       |  Convert hello-world style strings to helloWorld style strings 
+  removeSpacesAndLowerCase          |     string       |  Converting to lower case and remove spaces in a string. Ex:My Name - myname
+  replaceSpaceWithUnderscore        |     string       |  Converting space to underscore in a string. Ex:My Name - My_Name
+  replaceSpecialCharsWithUnderscore |     string       |  Replace special chars like @,$ to _ . Ex:abc@123%a$ - abc_123_a_
+  addKeyToObject                    |     object       |  Adds key to objects
+  getIndex                          |    arr,object    |  Find index of an Item from Array of objects.
+  toNumber                          |      value       |  Convert a string to number
+  partition                         |   arr, criteria  |  Partition array into two arrays based on criteria
+  isArray                           |      value       |  Check for an Array
+  isObject                          |      value       |  Check for an Object
+  isFunction                        |      value       |  Check for a function
 
 ## Storage Util Methods
 
@@ -75,6 +82,7 @@ npm i utileo --save-dev
   getDateByDashFormat             |      date        |  Returns date with DD-MM-YYYY format
   getDateBySlashFormat            |      date        |  Returns date with DD/MM/YYYY format
   timestampToDate                 |    timestamp     |  Converting timestamp to date Ex : 1560211200000 to Tue Jun 11 2019
+  getDateFromString               |     string       |  Converting string to date Ex : '6-11-2019' to Tue Jun 11 2019
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -82,12 +90,14 @@ npm i utileo --save-dev
 ```javascript
 import { CurrencyUtils, CommonUtils, StorageUtils, GeoLocationUtils, URLUtils, History, DateUtils } from 'utileo';
 
-// Currency Utils
+//---------------------------------- Currency Utils -------------------------//
 CurrencyUtils.format('10000') // 10,000
 CurrencyUtils.format('10000.1234',true) // 10,000.12
 CurrencyUtils.parse('1,00,000') // 100000 
 
-// Common Utils
+//---------------------------------- Common Utils -------------------------------------//
+CommonUtils.validateName('only alphabets')// true
+CommonUtils.validateOnlyNumber('1233')// true
 CommonUtils.titleCase('main menu')// Main Menu
 CommonUtils.camelize('main-menu')// mainMenu
 CommonUtils.toNumber('1234')// 1234
@@ -107,32 +117,40 @@ var groups = CommonUtils.partition(users, function (user) {
 // groups[0] has [{'user':'fred', 'age': 40, 'active': true}]
 // groups[1] has [{'user':'barney', 'age': 36, 'active': false}, {'user': 'pebbles', 'age': 1, 'active': false}]
 
-// Storage Utils
+CommonUtils.getIndex(users,{'user': 'barney', 'age': 36, 'active': false});// 0
+
+CommonUtils.addKeyToObject(users);// key(type) will be added
+// [{type: "0", user: "barney", age: 36, active: false}
+// {type: "1", user: "fred", age: 40, active: true}
+// {type: "2", user: "pebbles", age: 1, active: false}]
+
+//------------------------ Storage Utils -----------------------------//
 StorageUtils.get('phoneNumber')// 9899224433
 StorageUtils.set('phoneNumber',9899224433)
 StorageUtils.has('phoneNumber')// true
 StorageUtils.remove('token')
 StorageUtils.removeAll()
 
-// geo Location
+//----------------------- Geo Location ----------------------------//
 let latLong = GeoLocationUtils.getLatLong()// value of lat long
 let latitude = latLong.lat
 let longitude = latLong.long
 
-// URL Parameter
+//--------------------------------- URL Parameter ---------------------------------------//
 var appVisa = URLUtils.getURLParameter(window.location.href, 'visa')// 12n23be3h3bhbbh34
 
-// History
+//--------- History --------//
 History.replace("/")
 History.goBack()
 History.push("/")
 
-// Date Utils
+//------------------------------------------ Date Utils ------------------------------------------------//
 const currDate = DateUtils.getCurrentDate();// Wed Jul 14 2020 13:07:57 GMT+0530 (India Standard Time)
 const dateObj = DateUtils.formatDate(currDate);// {day: 14, month: 6, year: 2020}
 DateUtils.getDateByDashFormat(currDate);// 14-07-2020
 DateUtils.getDateBySlashFormat(currDate);// 14/07/2020
 DateUtils.timestampToDate(1560211200000);// Tue Jun 11 2019 05:30:00 GMT+0530 (India Standard Time)
+DateUtils.getDateFromString('2/10/2017');// Sat Feb 10 2017 00:00:00 GMT+0530 (India Standard Time)
 
 ```
 
