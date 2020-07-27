@@ -80,18 +80,10 @@ const _timestampToDate = timestamp => {
  * Sat Feb 10 2017 00:00:00 GMT+0530 (India Standard Time)
  */
 const _getDateFromString = value => {
-    return new Date(
-      value
-        ?.split(' ')
-        .map(part =>
-          part
-            .split('/')
-            .reverse()
-            .join('/')
-        )
-        .join(' ')
-    );
-  };
+    const dateSplit = value.split("/");
+    if (dateSplit.length < 3) return "Invalid date";
+    return new Date(`${dateSplit[1]}/${dateSplit[0]}/${dateSplit[2]}`)
+};
 
 export default {
     formatDate: _formatDate,

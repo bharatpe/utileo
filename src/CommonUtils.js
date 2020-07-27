@@ -59,7 +59,7 @@ const _camelize = str => {
  */
 const _removeSpacesAndLowerCase = str => {
     if (typeof str === "string") {
-        return str?.toLowerCase().replace(' ', '');
+        return str.toLowerCase().replace(' ', '');
     }
     return str;
   };

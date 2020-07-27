@@ -1,6 +1,7 @@
+/* eslint-disable no-case-declarations */
 // check permissions
 function checkPermission() {
-    if (navigator.permissions) {
+    if (navigator && navigator.permissions) {
         return navigator.permissions.query({name:'geolocation'});
     } else {
         return {
@@ -8,7 +9,7 @@ function checkPermission() {
         }
     }
 }
-​
+
 // return timeout promise
 function getTimeoutPromise(timeout = 10000, rejectParams = {}) {
     let timeoutRef = null;
@@ -21,25 +22,25 @@ function getTimeoutPromise(timeout = 10000, rejectParams = {}) {
             console.error('timeout on fetch User Latitude and Longitude');
         }, timeout);
     });
-​
+
     // bind method for cancel existing timeout
     timeoutPromise.cancelTimeout = function() {
         clearTimeout(timeoutRef);
     }
     return timeoutPromise;
 }
-​
+
 // get current geo lat long
 function getCurrentLatLong(timeout) {
     const racePromiseList = [];
     let timeoutPromise = null;
-​
+
     // check need of timeout promise or not
     if (timeout !== undefined) {
         timeoutPromise = getTimeoutPromise(timeout, {latitude: null, longitude: null});
         racePromiseList.push(timeoutPromise);
     }
-​
+
     // create lag long promise
     const langLongPromise = new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -57,20 +58,18 @@ function getCurrentLatLong(timeout) {
             if (timeoutPromise) {
                 timeoutPromise.cancelTimeout();
             }
-​
+
             resolve({
                 latitude: null,
                 longitude: null
             });
         });
     });
-​
-    racePromiseList.push(langLongPromise);
-​
-    
+
+    racePromiseList.push(langLongPromise);    
     return Promise.race(racePromiseList);
 }
-​
+
 /**
  * @function _getLatLong
  * @param {number} timeout
@@ -100,7 +99,7 @@ async function _getLatLong(timeout) {
     }
     return latLong;
 }
-​
+
 export default {
     getLatLong: _getLatLong,
   };
