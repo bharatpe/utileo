@@ -11,12 +11,12 @@ module.exports = {
     module : {
         rules : [
             {
-                test : /\.js$/,
-                // eslint-disable-next-line no-undef
-                include : path.resolve(__dirname, 'src'),
+                test: /\.js$/,
                 exclude: /node_modules/,
-                loaders : 'babel-loader'
-            }
+                use: {
+                  loader: 'babel-loader',
+                },
+              },
         ]
     },
     output : {
@@ -28,14 +28,14 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new TerserPlugin({
-          parallel: true,
-          terserOptions: {
-            ecma: 6,
-          },
-        })
+        // new UglifyJsPlugin()
     ],
     optimization: {
-        minimizer: [new UglifyJsPlugin()],
+        minimizer: [new TerserPlugin({
+            parallel: true,
+            terserOptions: {
+              ecma: 6,
+            },
+          })],
     },
 }
