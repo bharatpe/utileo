@@ -193,8 +193,7 @@ const _isFunction = func => {
     return typeof func === 'function';
 };
 
-
-/**
+/*
  * @name isIOS
  * @description To check the device is IOS or not
  * @return {boolean}
