@@ -4,7 +4,7 @@
 let StorageMap = {};
 
 /**
- * @function strToJson
+ * @name strToJson
  * @param {string} str 
  * @description string to JSON object conversation
  */
@@ -17,7 +17,7 @@ const strToJson = (str) => {
 }
 
 /**
- * @function _get
+ * @name _get
  * @param {string} key 
  * @description get value from localstorage by key name
  */
@@ -28,7 +28,7 @@ const _get = (key) => {
 }
 
 /**
- * @function _set
+ * @name _set
  * @param {string} key 
  * @param {string} value 
  * @description set value to localstorage
@@ -45,7 +45,7 @@ const _set = (key, value) => {
 }
 
 /**
- * @function _has
+ * @name _has
  * @param {string} key 
  * @description check key available in localstorage
  */
@@ -54,7 +54,7 @@ const _has = (key) => {
 }
 
 /**
- * @function _remove
+ * @name _remove
  * @param {string} key 
  * @description remove key from localstorage
  */
@@ -64,7 +64,7 @@ const _remove = (key) => {
 }
 
 /**
- * @function _removeAll
+ * @name _removeAll
  * @description remove all items from localstorage
  */
 const _removeAll = () => {

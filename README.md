@@ -50,6 +50,7 @@ npm i utileo --save-dev
   isArray                           |      value       |  Check for an Array
   isObject                          |      value       |  Check for an Object
   isFunction                        |      value       |  Check for a function
+  isIOS                             |      none        |  Check device type is IOS or not
 
 ## Storage Util Methods
 

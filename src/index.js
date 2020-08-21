@@ -1,9 +1,9 @@
 import StorageUtils from './StorageUtils';
 import DateUtils from './DateUtils';
 import CommonUtils from './CommonUtils';
-import History from './history';
-import URLUtils from './urlParameter';
-import GeoLocationUtils from './geolocation';
+import History from './History';
+import URLUtils from './UrlParse';
+import GeoLocationUtils from './Geolocation';
 import CurrencyUtils from './CurrencyUtils';
 
 export {

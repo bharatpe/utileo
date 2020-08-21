@@ -1,5 +1,5 @@
 /**
- * @function _getURLParameter
+ * @name _getURLParameter
  * @param {string} qrString 
  * @param {string} paramName 
  * @description get value of param from URL
