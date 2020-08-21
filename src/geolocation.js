@@ -71,7 +71,7 @@ function getCurrentLatLong(timeout) {
 }
 
 /**
- * @function _getLatLong
+ * @name _getLatLong
  * @param {number} timeout
  * @description get lat and long
  */
