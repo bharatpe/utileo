@@ -1,14 +1,18 @@
+interface StorageMapType {
+    [key: string]: string;
+}
+
 /**
  * @name StorageMap object used for when Local Storage quota exceeded
  */
-let StorageMap = {};
+let StorageMap: StorageMapType = {};
 
 /**
  * @name strToJson
  * @param {string} str 
  * @description string to JSON object conversation
  */
-const strToJson = (str) => {
+const strToJson = <T>(str: string): T|string => {
     try {
         return JSON.parse(str);
     } catch (e) {
@@ -21,10 +25,10 @@ const strToJson = (str) => {
  * @param {string} key 
  * @description get value from localstorage by key name
  */
-const _get = (key) => {
-    let value = StorageMap[key] || window.localStorage.getItem(key);
-    value = strToJson(value);
-    return value;
+const _get = <T>(key: string): T|string => {
+    const value = StorageMap[key] || window.localStorage.getItem(key);
+    const jsonValue = strToJson<T>(value);
+    return jsonValue;
 }
 
 /**
@@ -33,14 +37,15 @@ const _get = (key) => {
  * @param {string} value 
  * @description set value to localstorage
  */
-const _set = (key, value) => {
+const _set = (key: string, value: any): void => {
+    let stringVal = '';
     if (typeof value === 'object') {
-        value = JSON.stringify(value);
+        stringVal = JSON.stringify(value);
     }
     try {
-        window.localStorage.setItem(key, value);
+        window.localStorage.setItem(key, stringVal);
     } catch (e) {
-        StorageMap[key] = value;
+        StorageMap[key] = stringVal;
     }
 }
 
@@ -49,8 +54,8 @@ const _set = (key, value) => {
  * @param {string} key 
  * @description check key available in localstorage
  */
-const _has = (key) => {
- return (StorageMap.hasOwnProperty(key) || window.localStorage.getItem(key) !== null);  
+const _has = (key: string): boolean => {
+ return ((key in StorageMap) || window.localStorage.getItem(key) !== null);  
 }
 
 /**
@@ -58,7 +63,7 @@ const _has = (key) => {
  * @param {string} key 
  * @description remove key from localstorage
  */
-const _remove = (key) => {
+const _remove = (key: string): void => {
     window.localStorage.removeItem(key);
     delete StorageMap[key];
 }
@@ -67,7 +72,7 @@ const _remove = (key) => {
  * @name _removeAll
  * @description remove all items from localstorage
  */
-const _removeAll = () => {
+const _removeAll = (): void => {
     StorageMap = {};
     window.localStorage.clear();
 }

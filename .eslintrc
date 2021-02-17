@@ -1,19 +1,17 @@
 {
-    "env": {
-      "browser": true,
-      "jest": true,
-      "es6": true
-    },
-    "parser": "babel-eslint",
-    "plugins": ["import"],
-    "extends": "eslint:recommended",
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended"
+    ],
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "rules": {
-      "no-console": 0,
-      "no-eval": "error",
-      "import/first": "error"
+      "@typescript-eslint/consistent-type-assertions": "error",
+      "@typescript-eslint/explicit-function-return-type": "error"
     }
   }
