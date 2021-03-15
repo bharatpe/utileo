@@ -29,7 +29,7 @@ const GeolocationPositionErrorCode = {
  *    })
  * ```
  */
-const checkGeolocationPermission = (): Promise<PermissionStatus> => {
+export const checkGeolocationPermission = (): Promise<PermissionStatus> => {
     if (navigator && navigator.permissions) {
         return navigator.permissions.query({name:'geolocation'});
     }
@@ -43,7 +43,7 @@ const checkGeolocationPermission = (): Promise<PermissionStatus> => {
  * @param {PositionOptions} positionOptions
  * @description request to get Lat long
  */
-const getCurrentLatLong = (timeout: number = 20000, positionOptions: PositionOptions = {}): Promise<GeolocationPosition  | GeolocationPositionError> => {
+export const getCurrentLatLong = (timeout: number = 20000, positionOptions: PositionOptions = {}): Promise<GeolocationPosition  | GeolocationPositionError> => {
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition((position) => {
             resolve(position);
@@ -61,7 +61,7 @@ const getCurrentLatLong = (timeout: number = 20000, positionOptions: PositionOpt
  * @param {number} timeout
  * @description getting user Geolocation
  */
-const getGeolocation = (timeout: number): Promise<GeolocationPosition  | GeolocationPositionError> => {
+export const getGeolocation = (timeout: number): Promise<GeolocationPosition  | GeolocationPositionError> => {
     if (!('geolocation' in navigator)) return Promise.reject({ code: GeolocationPositionErrorCode.NOT_SUPPORTED});
 
     try {
@@ -70,9 +70,3 @@ const getGeolocation = (timeout: number): Promise<GeolocationPosition  | Geoloca
         return Promise.reject(err);
     }
 }
-
-export default {
-    GeolocationPositionErrorCode,
-    getGeolocation,
-    checkGeolocationPermission,
-};

@@ -2,11 +2,11 @@ const ONLY_ALPHABETS_REGEX = /^[A-Za-z ]+$/;
 const ONLY_NUMBER_REGEX = /^[0-9\b]+$/;
 
 /**
- * @name _validateName
+ * @name validateName
  * @param {string} str 
  * @description Check if all character in the string are alphabets
  */
-const _validateName = (str: string): boolean => {
+export const validateName = (str: string): boolean => {
     if (typeof str === "string") {
         return ONLY_ALPHABETS_REGEX.test(str);
     }
@@ -14,11 +14,11 @@ const _validateName = (str: string): boolean => {
 };
 
 /**
- * @name _validateOnlyNumber
+ * @name validateOnlyNumber
  * @param {string,number} str 
  * @description Check if it is a number
  */
-const _validateOnlyNumber = (str: string): boolean => {
+export const validateOnlyNumber = (str: string): boolean => {
     if (typeof str === "string" || typeof str === "number") {
         return ONLY_NUMBER_REGEX.test(str);
     }
@@ -26,11 +26,11 @@ const _validateOnlyNumber = (str: string): boolean => {
 };
 
 /**
- * @name _titleCase
+ * @name titleCase
  * @param {string} str 
  * @description convert a string to title case
  */
-const _titleCase = (str: string): string => {
+export const titleCase = (str: string): string => {
     if (typeof str === "string") {
         return str.toLowerCase().split(' ').map(function(word) {
             return (word.charAt(0).toUpperCase() + word.slice(1));
@@ -40,11 +40,11 @@ const _titleCase = (str: string): string => {
 };
 
 /**
- * @name _camelize
+ * @name camelize
  * @param {string} str 
  * @description Converting hello-world style strings to helloWorld style strings 
  */
-const _camelize = (str: string): string => {
+export const camelize = (str: string): string => {
     const camelizeRE = /-(\w)/g;
     if (typeof str === "string") {
         return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '');
@@ -53,11 +53,11 @@ const _camelize = (str: string): string => {
 };
 
 /**
- * @name _removeSpacesAndLowerCase
+ * @name removeSpacesAndLowerCase
  * @param {string} str 
  * @description Converting to lower case and remove spaces in a string 
  */
-const _removeSpacesAndLowerCase = (str: string): string => {
+export const removeSpacesAndLowerCase = (str: string): string => {
     if (typeof str === "string") {
         return str.toLowerCase().replace(' ', '');
     }
@@ -65,11 +65,11 @@ const _removeSpacesAndLowerCase = (str: string): string => {
   };
 
 /**
- * @name _replaceSpaceWithUnderscore
+ * @name replaceSpaceWithUnderscore
  * @param {string} str 
  * @description Converting space to underscore in a string 
  */
-const _replaceSpaceWithUnderscore = (str: string): string => {
+export const replaceSpaceWithUnderscore = (str: string): string => {
     if (typeof str === "string") {
         return str && str.replace(' ', '_').toLowerCase();
     }
@@ -77,11 +77,11 @@ const _replaceSpaceWithUnderscore = (str: string): string => {
 };
 
 /**
- * @name _replaceSpecialCharsWithUnderscore
+ * @name replaceSpecialCharsWithUnderscore
  * @param {string} str 
  * @description Replace special chars like @,$ to _ 
  */
-const _replaceSpecialCharsWithUnderscore = (str: string): string => {
+export const replaceSpecialCharsWithUnderscore = (str: string): string => {
     if (typeof str === "string") {
         return str && str.replace(/[^A-Z0-9]+/gi, '_').toLowerCase();
     }
@@ -89,12 +89,12 @@ const _replaceSpecialCharsWithUnderscore = (str: string): string => {
 };
 
 /**
- * @name _getIndex
+ * @name getIndex
  * @param {Array} inputArr
  * @param {Object} needleObj 
  * @description Returns index of needleObj in an array of objects inputArr
  */
-const _getIndex = (inputArr: any, needleObj: any): number => {
+export const getIndex = (inputArr: any, needleObj: any): number => {
 	if (Object.prototype.toString.call(needleObj) !== '[object Object]') {
 		return -1;
 	}
@@ -115,22 +115,22 @@ const _getIndex = (inputArr: any, needleObj: any): number => {
 }
 
 /**
- * @name _toNumber
+ * @name toNumber
  * @param {string} value 
  * @description convert a string to number
  */
-const _toNumber = (value: string): number => {
+export const toNumber = (value: string): number => {
     return Number(value);
 };
 
 /**
- * @name _partition
+ * @name partition
  * @param {array} arr 
  * @param {function} criteria 
  * @description splits an array into two groups - one that match criteria and one that don't
  */
-const _partition = <T>(arr: Array<T>, criteria: CallableFunction): Array<Array<T>> => {
-    if (_isArray(arr)) {
+export const partition = <T>(arr: Array<T>, criteria: CallableFunction): Array<Array<T>> => {
+    if (isArray(arr)) {
         const arr1 = arr.filter((item: T) => criteria(item));
         const arr2 = arr.filter((item: T) => !criteria(item));
         return [arr1, arr2];
@@ -139,29 +139,29 @@ const _partition = <T>(arr: Array<T>, criteria: CallableFunction): Array<Array<T
 };
 
 /**
- * @name _isArray
+ * @name isArray
  * @param {*} arr 
  * @description Check for an Array
  */
-const _isArray = (arr: Array<any>): boolean => {
+export const isArray = (arr: Array<any>): boolean => {
     return Array.isArray(arr);
 };
 
 /**
- * @name _isObject
+ * @name isObject
  * @param {*} obj 
  * @description Check for an Object
  */
-const _isObject = (obj: any): boolean => {
+export const isObject = (obj: any): boolean => {
     return Object.prototype.toString.call(obj) === "[object Object]";
 };
 
 /**
- * @name _isFunction
+ * @name isFunction
  * @param {*} func 
  * @description Check for a function
  */
-const _isFunction = (func: Function): boolean => {
+export const isFunction = (func: Function): boolean => {
     return typeof func === 'function';
 };
 
@@ -170,7 +170,7 @@ const _isFunction = (func: Function): boolean => {
  * @description To check the device is IOS or not
  * @return {boolean}
  */
-const _isIOS = (): boolean => {
+export const isIOS = (): boolean => {
     return (
       [
         'iPad Simulator',
@@ -184,20 +184,3 @@ const _isIOS = (): boolean => {
       (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
     );
   };
-
-export default {
-    validateName: _validateName,
-    validateOnlyNumber: _validateOnlyNumber,
-    titleCase: _titleCase,
-    camelize: _camelize,
-    removeSpacesAndLowerCase: _removeSpacesAndLowerCase,
-    replaceSpaceWithUnderscore: _replaceSpaceWithUnderscore,
-    replaceSpecialCharsWithUnderscore: _replaceSpecialCharsWithUnderscore,
-    getIndex: _getIndex,
-    toNumber: _toNumber,
-    partition: _partition,
-    isArray: _isArray,
-    isObject: _isObject,
-    isFunction: _isFunction,
-    isIOS: _isIOS,
-};

@@ -1,1 +1,1 @@
-export { default } from './UrlUtils';
+export { getURLParameter } from './UrlUtils';

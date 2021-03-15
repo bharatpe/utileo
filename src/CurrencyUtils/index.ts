@@ -1,1 +1,2 @@
-export { default } from './CurrencyUtils';
+export { formatCurrency } from './CurrencyUtils';
+export { parseCurrency } from './CurrencyUtils';

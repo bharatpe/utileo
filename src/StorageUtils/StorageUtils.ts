@@ -21,23 +21,23 @@ const strToJson = <T>(str: string): T|string => {
 }
 
 /**
- * @name _get
+ * @name get
  * @param {string} key 
  * @description get value from localstorage by key name
  */
-const _get = <T>(key: string): T|string => {
+export const get = <T>(key: string): T|string => {
     const value = StorageMap[key] || window.localStorage.getItem(key);
     const jsonValue = strToJson<T>(value);
     return jsonValue;
 }
 
 /**
- * @name _set
+ * @name set
  * @param {string} key 
  * @param {string} value 
  * @description set value to localstorage
  */
-const _set = (key: string, value: any): void => {
+export const set = (key: string, value: any): void => {
     let stringVal = '';
     if (typeof value === 'object') {
         stringVal = JSON.stringify(value);
@@ -50,37 +50,29 @@ const _set = (key: string, value: any): void => {
 }
 
 /**
- * @name _has
+ * @name has
  * @param {string} key 
  * @description check key available in localstorage
  */
-const _has = (key: string): boolean => {
+export const has = (key: string): boolean => {
  return ((key in StorageMap) || window.localStorage.getItem(key) !== null);  
 }
 
 /**
- * @name _remove
+ * @name remove
  * @param {string} key 
  * @description remove key from localstorage
  */
-const _remove = (key: string): void => {
+export const remove = (key: string): void => {
     window.localStorage.removeItem(key);
     delete StorageMap[key];
 }
 
 /**
- * @name _removeAll
+ * @name removeAll
  * @description remove all items from localstorage
  */
-const _removeAll = (): void => {
+export const removeAll = (): void => {
     StorageMap = {};
     window.localStorage.clear();
 }
-
-export default {
-    get: _get,
-    set: _set,
-    has: _has,
-    remove: _remove,
-    removeAll: _removeAll
-};

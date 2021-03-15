@@ -3,7 +3,7 @@
  * @param  {[number, boolean]} amount [200000]
  * @return {[string]}                [2,00,000]
  */
-const format = (amount: String | Number, isFloat = true): String => {
+export const formatCurrency = (amount: String | Number, isFloat = true): String => {
   if (typeof amount === "string" || typeof amount === "number") {
     if (isFloat) {
       const num = Number(Number(amount).toFixed(2)).toString();
@@ -25,14 +25,9 @@ const format = (amount: String | Number, isFloat = true): String => {
  * @param  {[string]} amount [2,00,000]
  * @return {[number]}        [200000]
  */
-const parse =  (amount: String): Number => {
+export const parseCurrency =  (amount: String): Number => {
   if (typeof amount === "string") {
     return Number(amount.split(",").join(""));
   }
   return Number(amount);
-};
-
-export default {
-  format,
-  parse
 };
