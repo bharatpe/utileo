@@ -1,13 +1,12 @@
 import typescript from 'rollup-plugin-typescript2';
-import pkg from './package.json';
 import {terser} from "rollup-plugin-terser";
 import multiInput from 'rollup-plugin-multi-input';
 
 export default [{
  input: 'src/index.ts', // our source file
  output: {
-   file: './lib/index.umd.js',
-   format: 'umd',
+   file: './lib/utileo.min.js',
+   format: 'iife',
    name: 'Utileo',
   },
  plugins: [
