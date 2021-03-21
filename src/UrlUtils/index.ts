@@ -1,0 +1,1 @@
+export { getURLParameter } from './UrlUtils';
