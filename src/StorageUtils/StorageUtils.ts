@@ -26,8 +26,13 @@ const strToJson = <T>(str: string): T|string => {
  * @description get value from localstorage by key name
  */
 export const get = <T>(key: string): T|string => {
-    const value = StorageMap[key] || window.localStorage.getItem(key);
-    const jsonValue = strToJson<T>(value);
+    let jsonValue = null;
+    try {
+        const value = (key in StorageMap) ? StorageMap[key] : window.localStorage.getItem(key);
+        jsonValue = strToJson<T>(value);
+    } catch (error) {
+        console.error(error);
+    }
     return jsonValue;
 }
 
@@ -38,14 +43,16 @@ export const get = <T>(key: string): T|string => {
  * @description set value to localstorage
  */
 export const set = (key: string, value: any): void => {
-    let stringVal = '';
+    let stringVal = value;
     if (typeof value === 'object') {
         stringVal = JSON.stringify(value);
     }
+
     try {
         window.localStorage.setItem(key, stringVal);
-    } catch (e) {
+    } catch (error) {
         StorageMap[key] = stringVal;
+        console.log(error);
     }
 }
 
@@ -55,7 +62,12 @@ export const set = (key: string, value: any): void => {
  * @description check key available in localstorage
  */
 export const has = (key: string): boolean => {
- return ((key in StorageMap) || window.localStorage.getItem(key) !== null);  
+    try {
+        return (key in StorageMap) || window.localStorage.getItem(key) !== null
+    } catch (error) {
+        console.error(error);
+        return false;
+    }
 }
 
 /**
@@ -64,8 +76,12 @@ export const has = (key: string): boolean => {
  * @description remove key from localstorage
  */
 export const remove = (key: string): void => {
-    window.localStorage.removeItem(key);
-    delete StorageMap[key];
+    try {
+        delete StorageMap[key];
+        window.localStorage.removeItem(key);
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 /**
@@ -73,6 +89,10 @@ export const remove = (key: string): void => {
  * @description remove all items from localstorage
  */
 export const removeAll = (): void => {
-    StorageMap = {};
-    window.localStorage.clear();
+    try {
+        StorageMap = {};
+        window.localStorage.clear();
+    } catch (error) {
+        console.error(error);
+    }
 }
