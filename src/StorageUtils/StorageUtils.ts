@@ -27,7 +27,7 @@ const strToJson = <T>(str: string): T|string => {
  */
 export const get = <T>(key: string): T|string => {
     const value = StorageMap[key] || window.localStorage.getItem(key);
-    const jsonValue = strToJson<T>(value);
+    const jsonValue = strToJson<T>(value as string);
     return jsonValue;
 }
 
