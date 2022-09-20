@@ -1,6 +1,21 @@
 {
 	"name": "conventionalcommits",
 	"types": [
+    {
+			"type": "add",
+			"hidden": false,
+			"section": "🚀 Add"
+		},
+    {
+			"type": "update",
+			"hidden": false,
+			"section": "🚀 Update"
+		},
+    {
+			"type": "delete",
+			"hidden": false,
+			"section": "🚀 Delete"
+		},
 		{
 			"type": "feat",
 			"hidden": false,
@@ -14,7 +29,27 @@
 		{
 			"type": "chore",
 			"hidden": false,
-			"section": "🛠 Maintenance"
+			"section": "🛠 Others"
+		},
+		{
+			"type": "ci",
+			"section": "🛠 Others",
+			"hidden": false
+		},
+		{
+			"type": "style",
+			"section": "🛠 Others",
+			"hidden": false
+		},
+		{
+			"type": "test",
+			"section": "🛠 Others",
+			"hidden": false
+		},
+		{
+			"type": "build",
+			"section": "🛠 Build",
+			"hidden": false
 		},
 		{
 			"type": "docs",
@@ -24,7 +59,7 @@
 		{
 			"type": "refactor",
 			"hidden": false,
-			"section": "👨‍🔧 Refactors"
+			"section": "🕸 Refactors"
 		},
 		{
 			"type": "perf",
