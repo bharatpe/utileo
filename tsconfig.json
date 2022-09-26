@@ -13,6 +13,6 @@
   },
   "exclude": ["./example/**"],
   "include": [
-    "src/**/*"
+    "packages/**/*"
   ]
 }

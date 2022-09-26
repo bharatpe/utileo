@@ -28,6 +28,7 @@
     "eslint": "^7.20.0",
     "eslint-plugin-prettier": "^3.3.1",
     "husky": "^7.0.4",
+    "lerna": "^5.5.2",
     "replace-json-property": "^1.6.3",
     "require": "^2.4.20",
     "rollup": "^2.38.5",
@@ -53,10 +54,12 @@
     "url": "git://github.com/bharatpe/utileo"
   },
   "homepage": "https://github.com/bharatpe/utileo#readme",
-  "dependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
     }
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

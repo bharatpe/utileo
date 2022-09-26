@@ -10,7 +10,6 @@ export const getURLParameter = (qrString: string, paramName: string): string => 
     const regex = new RegExp('[\\?&]' + paramName + '=([^&#]*)');
     const results = regex.exec(qrString);
   
-  
     if (results && results.length > 0) {
       return decodeURIComponent(results[1].replace(/\+/g, ' '));
     } else {
