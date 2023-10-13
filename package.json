@@ -1,18 +1,21 @@
 {
-  "name": "utileo",
-  "version": "2.0.1",
+  "name": "@bp/utileo",
+  "version": "3.0.1",
   "description": "JS library with most common utils.",
   "main": "index.js",
   "module": "index.js",
-  "type": "module",
-  "typings": "lib/index.d.ts",
+  "typings": "index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.bharatpe.io"
+  },
   "scripts": {
     "build": "npm run lint && npm run clean && rollup -c",
-    "clean": "rm -rf lib",
+    "clean": "rm -rf dist",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint --fix src/.",
     "release": "standard-version",
-    "postbuild": "cp package.json lib"
+    "publish:fix": "npm publish dist --tag fix",
+    "publish:latest": "npm publish dist --tag latest"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
@@ -34,6 +37,7 @@
     "rollup-plugin-multi-input": "^1.2.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.29.0",
+    "rollup-plugin-copy": "^3.5.0",
     "semantic-release": "^17.4.1",
     "ts-loader": "^8.0.17",
     "typescript": "^4.1.5"
